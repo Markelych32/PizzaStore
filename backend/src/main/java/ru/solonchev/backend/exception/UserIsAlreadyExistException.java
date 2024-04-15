@@ -13,8 +13,4 @@ public class UserIsAlreadyExistException extends Error {
                 UserIsAlreadyExistException.description
         );
     }
-
-    public UserIsAlreadyExistException(int code, String message, String description) {
-        super(code, message, description);
-    }
 }
