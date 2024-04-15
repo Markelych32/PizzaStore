@@ -1,14 +1,15 @@
 package ru.solonchev.backend.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -25,4 +26,16 @@ public class Pizza {
     private String description;
     @Column(name = "img_link", nullable = false)
     private String imgLink;
+    @ManyToMany(mappedBy = "pizzas")
+    private List<User> users = new ArrayList<>();
+
+    public void addUser(User user) {
+        users.add(user);
+        user.getPizzas().add(this);
+    }
+
+    public void removeUser(User user) {
+        user.getPizzas().remove(this);
+        users.remove(user);
+    }
 }
