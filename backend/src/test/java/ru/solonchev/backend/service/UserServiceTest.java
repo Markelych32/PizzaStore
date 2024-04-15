@@ -13,6 +13,7 @@ import ru.solonchev.backend.exception.UserNotFoundException;
 import ru.solonchev.backend.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -88,5 +89,24 @@ public class UserServiceTest {
         when(userRepository.findAll()).thenReturn(users);
         final List<User> actualUsers = underTest.getAllUsers();
         assertEquals(users, actualUsers);
+    }
+
+    @Test
+    @SneakyThrows
+    void findUserByIdAbsentUserShouldThrowException() {
+        when(userRepository.findById(anyLong())).thenReturn(Optional.empty());
+        assertThrows(UserNotFoundException.class, () -> underTest.findUserById(1L));
+    }
+
+    @Test
+    @SneakyThrows
+    void findUserByIdShouldReturnUser() {
+        final User user = TestUserData.getUser1();
+        final Long userId = TestUserData.user1Id();
+        when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
+
+        final User actualUser = underTest.findUserById(userId);
+        assertEquals(user, actualUser);
+        verify(userRepository, times(1)).findById(anyLong());
     }
 }

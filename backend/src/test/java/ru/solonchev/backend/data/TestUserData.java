@@ -7,6 +7,10 @@ public final class TestUserData {
 
     }
 
+    public static Long user1Id() {
+        return 13L;
+    }
+
     public static User getUser1() {
         return User.builder()
                 .id(13L)

@@ -21,6 +21,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User findUserById(Long id) throws UserNotFoundException {
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    }
+
     public void deleteUser(Long id) throws UserNotFoundException {
         if (!userRepository.existsById(id)) {
             throw new UserNotFoundException();
