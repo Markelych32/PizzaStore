@@ -7,6 +7,8 @@ import ru.solonchev.backend.exception.UserIsAlreadyExistException;
 import ru.solonchev.backend.exception.UserNotFoundException;
 import ru.solonchev.backend.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -24,5 +26,9 @@ public class UserService {
             throw new UserNotFoundException();
         }
         userRepository.deleteById(id);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
