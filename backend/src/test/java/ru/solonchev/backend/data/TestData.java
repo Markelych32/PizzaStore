@@ -5,8 +5,8 @@ import ru.solonchev.backend.domain.User;
 
 import java.util.ArrayList;
 
-public final class TestUserData {
-    private TestUserData() {
+public final class TestData {
+    private TestData() {
 
     }
 

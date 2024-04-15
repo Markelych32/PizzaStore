@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.solonchev.backend.data.TestUserData;
+import ru.solonchev.backend.data.TestData;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.exception.user.UserIsAlreadyExistException;
@@ -33,14 +33,14 @@ public class UserServiceTest {
     @SneakyThrows
     void addExistingUserShouldThrowException() {
         when(userRepository.existsById(anyLong())).thenReturn(true);
-        final User user = TestUserData.getUser1();
+        final User user = TestData.getUser1();
         assertThrows(UserIsAlreadyExistException.class, () -> underTest.addUser(user));
     }
 
     @Test
     @SneakyThrows
     void addNewUserShouldReturnUser() {
-        final User user = TestUserData.getUser1();
+        final User user = TestData.getUser1();
         when(userRepository.existsById(anyLong())).thenReturn(false);
         when(userRepository.save(any(User.class))).thenReturn(user);
 
@@ -67,7 +67,7 @@ public class UserServiceTest {
     @SneakyThrows
     void deleteExistingUserShouldDeleteUserById() {
         final Long userId = 1L;
-        final User user = TestUserData.getUser1();
+        final User user = TestData.getUser1();
 
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
         doNothing().when(userRepository).deleteById(anyLong());
@@ -88,7 +88,7 @@ public class UserServiceTest {
 
     @Test
     void getAllUsersShouldReturnUsers() {
-        List<User> users = List.of(TestUserData.getUser1(), TestUserData.getUser2());
+        List<User> users = List.of(TestData.getUser1(), TestData.getUser2());
         when(userRepository.findAll()).thenReturn(users);
         final List<User> actualUsers = underTest.getAllUsers();
         assertEquals(users, actualUsers);
@@ -104,8 +104,8 @@ public class UserServiceTest {
     @Test
     @SneakyThrows
     void findUserByIdShouldReturnUser() {
-        final User user = TestUserData.getUser1();
-        final Long userId = TestUserData.user1Id();
+        final User user = TestData.getUser1();
+        final Long userId = TestData.user1Id();
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
 
         final User actualUser = underTest.findUserById(userId);
