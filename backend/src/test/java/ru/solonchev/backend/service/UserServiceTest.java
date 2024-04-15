@@ -10,14 +10,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.solonchev.backend.data.TestUserData;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.exception.UserIsAlreadyExistException;
+import ru.solonchev.backend.exception.UserNotFoundException;
 import ru.solonchev.backend.repository.UserRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
@@ -44,6 +44,31 @@ public class UserServiceTest {
         final User actualUser = underTest.addUser(user);
 
         assertEquals(user, actualUser);
-        Mockito.verify(userRepository, times(1)).save(any(User.class));
+        verify(userRepository, times(1)).save(any(User.class));
+    }
+
+    @Test
+    @SneakyThrows
+    void deleteAbsentUserShouldThrowException() {
+        final Long userId = 1L;
+        final User user = TestUserData.getUser();
+
+        when(userRepository.existsById(anyLong())).thenReturn(false);
+
+        assertThrows(UserNotFoundException.class, () -> underTest.deleteUser(userId));
+        verify(userRepository, times(0)).deleteById(anyLong());
+    }
+
+    @Test
+    @SneakyThrows
+    void deleteExistingUserShouldDeleteUser() {
+        final Long userId = 1L;
+        final User user = TestUserData.getUser();
+
+        when(userRepository.existsById(anyLong())).thenReturn(true);
+        doNothing().when(userRepository).deleteById(anyLong());
+
+        underTest.deleteUser(userId);
+        verify(userRepository, times(1)).deleteById(anyLong());
     }
 }
