@@ -1,4 +1,6 @@
-package ru.solonchev.backend.exception;
+package ru.solonchev.backend.exception.user;
+
+import ru.solonchev.backend.exception.Error;
 
 public class UserNotFoundException extends Error {
     private static final int code = 404;

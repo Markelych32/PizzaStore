@@ -9,8 +9,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.solonchev.backend.data.TestUserData;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
-import ru.solonchev.backend.exception.UserIsAlreadyExistException;
-import ru.solonchev.backend.exception.UserNotFoundException;
+import ru.solonchev.backend.exception.user.UserIsAlreadyExistException;
+import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.UserRepository;
 
 import java.util.List;

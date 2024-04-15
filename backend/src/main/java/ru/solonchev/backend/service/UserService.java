@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
-import ru.solonchev.backend.exception.UserIsAlreadyExistException;
-import ru.solonchev.backend.exception.UserNotFoundException;
+import ru.solonchev.backend.exception.user.UserIsAlreadyExistException;
+import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.PizzaRepository;
 import ru.solonchev.backend.repository.UserRepository;
 
