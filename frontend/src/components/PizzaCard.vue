@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="img-container">
-      <img :src="pizza.imgUrl" alt="Pizza" />
+      <img :src="pizza.imgLink" alt="Pizza" />
     </div>
     <div class="name">
       <h2>{{ pizza.name }}</h2>
