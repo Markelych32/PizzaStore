@@ -1,0 +1,83 @@
+<template>
+  <div class="container">
+    <div class="img-container">
+      <img
+        src="https://img.freepik.com/free-photo/thinly-sliced-pepperoni-is-popular-pizza-topping-american-style-pizzerias-isolated-white-background-still-life_639032-229.jpg?t=st=1713267710~exp=1713271310~hmac=9b8d3e4cfb950429e3b1b6ef723f7dd1eecfae730dfece72380dfde5e7c7a766&w=740"
+        alt="Pizza Pepperoni"
+      />
+    </div>
+    <div class="name">
+      <!-- <h2>{{ pizza.name }}</h2> -->
+      <h2>Пепперони</h2>
+    </div>
+    <div class="description">
+      <!-- <p>{{ pizza.description }}</p> -->
+      <p>
+        Ультра супер пупер мега крутое описание самой вкусной пиццы в нашей
+        пиццерии!
+      </p>
+    </div>
+    <div class="price">
+      <!-- <h2>{{ pizza.price }} &#8381;</h2> -->
+      <h2>900 &#8381;</h2>
+      <button id="add-to-cart-btn">В корзину</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss" scoped>
+.container {
+  width: 256px;
+  font-family: Montserrat;
+  img {
+    width: 100%;
+  }
+  .name {
+    color: #797979;
+    font-weight: 800;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+  }
+  .description {
+    color: #686466;
+    font-weight: 500;
+    font-size: 13px;
+    p {
+      margin: 15px 0;
+    }
+  }
+  .price {
+    color: #231f20;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      margin: 0;
+    }
+  }
+  #add-to-cart-btn {
+    background-color: #f7d22d;
+    border: none;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+      color: #473e43;
+    }
+  }
+}
+</style>

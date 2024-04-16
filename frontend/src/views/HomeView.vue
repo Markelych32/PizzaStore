@@ -1,18 +1,38 @@
 <template>
   <div class="home">
-    <img alt="Pizza logo" src="../assets/pizza-logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Пицца</h1>
+    <div class="pizza-list">
+      <PizzaCard v-for="item in 10" :key="item.id" />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import PizzaCard from "@/components/PizzaCard.vue";
 
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    PizzaCard,
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  width: 80%;
+  margin: 0 auto;
+  h1 {
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 800;
+    color: #f7d22d;
+    margin-bottom: 10px;
+  }
+  .pizza-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+  }
+}
+</style>
