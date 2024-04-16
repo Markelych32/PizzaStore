@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     axiosGetPizzas() {
-      AXIOS.get("http://localhost:9090/pizza-store/pizzas")
+      axios
+        .get("http://localhost:9090/pizza-store/pizzas")
         .then((response) => {
           this.response = response.data;
         })
