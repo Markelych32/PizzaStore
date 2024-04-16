@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <div class="img-container">
-      <img :src="pizza.imgLink" alt="Pizza" />
-    </div>
-    <div class="name">
-      <h2>{{ pizza.name }}</h2>
+    <div>
+      <div class="img-container">
+        <img :src="pizza.imgLink" alt="Pizza" />
+      </div>
+      <div class="name">
+        <h2>{{ pizza.name }}</h2>
+      </div>
     </div>
     <div class="description">
       <p>{{ pizza.description }}</p>
