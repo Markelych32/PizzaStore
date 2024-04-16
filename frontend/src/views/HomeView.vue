@@ -4,18 +4,44 @@
     <img class="pasta-woman" src="../assets/pasta-woman.png" alt="" />
     <h1>Пицца</h1>
     <div class="pizza-list">
-      <PizzaCard v-for="item in 10" :key="item.id" />
+      <PizzaCard
+        v-for="pizza in this.response"
+        :key="pizza.id"
+        :pizza="pizza"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import PizzaCard from "@/components/PizzaCard.vue";
+import axios from "axios";
 
 export default {
   name: "HomeView",
   components: {
     PizzaCard,
+  },
+  data() {
+    return {
+      response: [],
+      errors: [],
+    };
+  },
+  methods: {
+    axiosGetPizzas() {
+      axios
+        .get("http://localhost:9090/pizza-store/pizzas")
+        .then((response) => {
+          this.response = response.data;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+  },
+  created() {
+    this.axiosGetPizzas();
   },
 };
 </script>
