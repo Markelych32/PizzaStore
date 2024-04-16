@@ -16,6 +16,7 @@
 <script>
 import PizzaCard from "@/components/PizzaCard.vue";
 import AXIOS from "../http-common";
+import axios from "axios";
 
 export default {
   name: "HomeView",
@@ -30,7 +31,7 @@ export default {
   },
   methods: {
     axiosGetPizzas() {
-      AXIOS.get("http://localhost:9090/pizza-store/pizzas")
+      axios.get("http://localhost:9090/pizza-store/pizzas")
         .then((response) => {
           this.response = response.data;
         })
