@@ -5,18 +5,12 @@
     </div>
     <div class="name">
       <h2>{{ pizza.name }}</h2>
-      <!-- <h2>Пепперони</h2> -->
     </div>
     <div class="description">
       <p>{{ pizza.description }}</p>
-      <!-- <p>
-        Ультра супер пупер мега крутое описание самой вкусной пиццы в нашей
-        пиццерии!
-      </p> -->
     </div>
     <div class="price">
       <h2>{{ pizza.price }} &#8381;</h2>
-      <!-- <h2>900 &#8381;</h2> -->
       <button id="add-to-cart-btn">В корзину</button>
     </div>
   </div>
@@ -36,6 +30,7 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 256px;
   height: 437px;
   font-family: Montserrat;
@@ -46,8 +41,7 @@ export default {
     color: #797979;
     font-weight: 800;
     h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
+      margin: 0;
       font-size: 24px;
     }
   }
@@ -56,7 +50,7 @@ export default {
     font-weight: 500;
     font-size: 13px;
     p {
-      margin: 15px 0;
+      margin: 0;
     }
   }
   .price {
