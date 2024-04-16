@@ -8,12 +8,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.solonchev.backend.data.TestData;
 import ru.solonchev.backend.domain.Pizza;
+import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistException;
 import ru.solonchev.backend.exception.pizza.PizzaNotFoundException;
+import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.PizzaRepository;
 import ru.solonchev.backend.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -99,5 +102,27 @@ public class PizzaServiceTest {
         when(pizzaRepository.existsById(anyLong())).thenReturn(true);
         underTest.deletePizzaById(id);
         verify(pizzaRepository, times(1)).deleteById(anyLong());
+    }
+
+    @Test
+    @SneakyThrows
+    void getPizzasOfExistingUser() {
+        Pizza pizza1 = TestData.getPizza1();
+        Pizza pizza2 = TestData.getPizza2();
+        User user = TestData.getUser1();
+        user.setPizzas(List.of(pizza1, pizza2));
+
+        when(userRepository.existsById(anyLong())).thenReturn(true);
+        when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
+
+        List<Pizza> expectedPizzas = List.of(pizza1, pizza2);
+        List<Pizza> actualPizzas = underTest.getPizzasOfUser(1L);
+        assertEquals(expectedPizzas, actualPizzas);
+    }
+
+    @Test
+    void getPizzasOfAbsentUserShouldThrowException() {
+        when(userRepository.existsById(anyLong())).thenReturn(false);
+        assertThrows(UserNotFoundException.class, () -> underTest.getPizzasOfUser(1L));
     }
 }

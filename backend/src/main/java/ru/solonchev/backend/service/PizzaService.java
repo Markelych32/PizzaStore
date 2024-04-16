@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistException;
 import ru.solonchev.backend.exception.pizza.PizzaNotFoundException;
+import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.PizzaRepository;
 import ru.solonchev.backend.repository.UserRepository;
 
@@ -41,5 +42,12 @@ public class PizzaService {
             throw new PizzaNotFoundException();
         }
         pizzaRepository.deleteById(id);
+    }
+
+    public List<Pizza> getPizzasOfUser(Long userId) throws UserNotFoundException {
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException();
+        }
+        return userRepository.findById(userId).get().getPizzas();
     }
 }
