@@ -29,9 +29,11 @@ public class Pizza {
     @ManyToMany(mappedBy = "pizzas")
     private List<User> users = new ArrayList<>();
 
-    public void addUser(User user) {
+    public void addUser(User user, int amount) {
         users.add(user);
-        user.getPizzas().add(this);
+        for (int i = 0; i < amount; i++) {
+            user.getPizzas().add(this);
+        }
     }
 
     public void removeUser(User user) {
