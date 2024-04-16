@@ -3,14 +3,13 @@ package ru.solonchev.backend.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.dto.user.request.UserAddRequest;
 import ru.solonchev.backend.service.PizzaService;
 import ru.solonchev.backend.service.UserService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/pizza-store")
@@ -38,4 +37,23 @@ public class BackendController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+        return ResponseEntity.ok().body(
+                userService.findUserById(userId)
+        );
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable Long userId) {
+        userService.deleteUserById(userId);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok().body(
+                userService.getAllUsers()
+        );
+    }
 }
