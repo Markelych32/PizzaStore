@@ -16,6 +16,7 @@
 <script>
 import PizzaCard from "@/components/PizzaCard.vue";
 import AXIOS from "../http-common";
+import axios from "axios";
 
 export default {
   name: "HomeView",

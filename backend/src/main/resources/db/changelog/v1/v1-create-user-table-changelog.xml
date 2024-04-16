@@ -16,7 +16,7 @@
     </changeSet>
 
     <changeSet id="v1-4" author="Mark Solonchev">
-        <loadData tableName="pizza" file="db/changelog/data/pizza-data.csv"/>
+        <loadData tableName="pizza" file="db/changelog/data/pizza-data.csv" separator=";"/>
     </changeSet>
 
 </databaseChangeLog>
