@@ -1,4 +1,4 @@
-package ru.solonchev.backend.dto.exception.response;
+package ru.solonchev.backend.dto.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -7,6 +7,7 @@ import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.exception.ApiError;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistAtUserException;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistException;
+import ru.solonchev.backend.exception.pizza.PizzaNotFoundAtUserException;
 import ru.solonchev.backend.exception.pizza.PizzaNotFoundException;
 import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.PizzaRepository;
@@ -67,6 +68,22 @@ public class PizzaService {
             throw new PizzaAlreadyExistAtUserException();
         }
         pizza.addUser(userRepository.findById(userId).get());
+        pizzaRepository.save(pizza);
+    }
+
+    public void deletePizzaAtUser(Long userId, Long pizzaId) throws ApiError {
+        if (!pizzaRepository.existsById(pizzaId)) {
+            throw new PizzaNotFoundException();
+        }
+        if (!userRepository.existsById(userId)) {
+            throw new UserNotFoundException();
+        }
+        Pizza pizza = pizzaRepository.findById(pizzaId).get();
+        User user = userRepository.findById(userId).get();
+        if (!user.getPizzas().contains(pizza)) {
+            throw new PizzaNotFoundAtUserException();
+        }
+        pizza.removeUser(user);
         pizzaRepository.save(pizza);
     }
 }

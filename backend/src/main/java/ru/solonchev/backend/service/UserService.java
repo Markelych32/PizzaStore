@@ -45,6 +45,19 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+    public void deleteAllPizzasAtUser(Long id) throws UserNotFoundException {
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isEmpty()) {
+            throw new UserNotFoundException();
+        }
+        User user = optionalUser.get();
+        for (Pizza pizza : user.getPizzas()) {
+            pizza.getUsers().remove(user);
+        }
+        user.setPizzas(new ArrayList<>());
+        userRepository.save(user);
+    }
+
 
     public List<User> getAllUsers() {
         return userRepository.findAll();

@@ -1,6 +1,6 @@
 package ru.solonchev.backend.exception;
 
-import ru.solonchev.backend.dto.exception.response.ApiErrorResponse;
+import ru.solonchev.backend.dto.exception.ApiErrorResponse;
 
 public class ApiError extends RuntimeException {
     private final int code;

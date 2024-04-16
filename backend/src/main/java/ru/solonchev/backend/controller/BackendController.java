@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
-import ru.solonchev.backend.dto.pizza.request.PizzaAddRequest;
+import ru.solonchev.backend.dto.pizza.PizzaAddRequest;
 import ru.solonchev.backend.dto.user.request.UserAddRequest;
 import ru.solonchev.backend.service.PizzaService;
 import ru.solonchev.backend.service.UserService;
@@ -104,5 +104,19 @@ public class BackendController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/user/{user_id}/pizza/{pizza_id}")
+    public ResponseEntity<Void> deletePizzaOfUser(
+            @PathVariable("user_id") Long userId,
+            @PathVariable("pizza_id") Long pizzaId
+    ) {
+        pizzaService.deletePizzaAtUser(userId, pizzaId);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/user/{user_id}/pizza")
+    public ResponseEntity<Void> deleteAllPizzasOfUser(@PathVariable("user_id") Long userId) {
+        userService.deleteAllPizzasAtUser(userId);
+        return ResponseEntity.ok().build();
+    }
 
 }

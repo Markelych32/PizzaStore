@@ -1,4 +1,4 @@
-package ru.solonchev.backend.dto.pizza.request;
+package ru.solonchev.backend.dto.pizza;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

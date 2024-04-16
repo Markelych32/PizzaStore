@@ -5,9 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.solonchev.backend.dto.exception.response.ApiErrorResponse;
+import ru.solonchev.backend.dto.exception.ApiErrorResponse;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistAtUserException;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistException;
+import ru.solonchev.backend.exception.pizza.PizzaNotFoundAtUserException;
 import ru.solonchev.backend.exception.pizza.PizzaNotFoundException;
 import ru.solonchev.backend.exception.user.UserIsAlreadyExistException;
 import ru.solonchev.backend.exception.user.UserNotFoundException;
@@ -43,6 +44,12 @@ public class BackendApiExceptionHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ApiErrorResponse> pizzaAlreadyExistsAtUser(PizzaAlreadyExistAtUserException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.toApiErrorResponse());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ApiErrorResponse> pizzaNotFoundAtUser(PizzaNotFoundAtUserException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.toApiErrorResponse());
     }
 }
