@@ -21,7 +21,6 @@ public final class TestData {
                 .firstName("Mark")
                 .secondName("Solonchev")
                 .password("123")
-                .pizzas(new ArrayList<>())
                 .build();
     }
 
@@ -32,7 +31,6 @@ public final class TestData {
                 .firstName("Artem")
                 .secondName("Loving")
                 .password("321")
-                .pizzas(new ArrayList<>())
                 .build();
     }
 
@@ -43,7 +41,6 @@ public final class TestData {
                 .price(15.0)
                 .description("Tasty pizza")
                 .imgLink("test_link")
-                .users(new ArrayList<>())
                 .build();
     }
     public static Pizza getPizza2() {
@@ -53,7 +50,6 @@ public final class TestData {
                 .price(18.50)
                 .description("Cool && tasty")
                 .imgLink("another_test_link")
-                .users(new ArrayList<>())
                 .build();
     }
 }

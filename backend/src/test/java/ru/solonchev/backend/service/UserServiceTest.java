@@ -1,6 +1,7 @@
 package ru.solonchev.backend.service;
 
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -13,6 +14,7 @@ import ru.solonchev.backend.exception.user.UserIsAlreadyExistException;
 import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +70,7 @@ public class UserServiceTest {
     void deleteExistingUserShouldDeleteUserById() {
         final Long userId = 1L;
         final User user = TestData.getUser1();
+        user.setPizzas(new ArrayList<>());
 
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
         doNothing().when(userRepository).deleteById(anyLong());

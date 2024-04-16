@@ -9,6 +9,7 @@ import ru.solonchev.backend.exception.user.UserNotFoundException;
 import ru.solonchev.backend.repository.PizzaRepository;
 import ru.solonchev.backend.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ public class UserService {
         if (userRepository.existsById(user.getId())) {
             throw new UserIsAlreadyExistException();
         }
+        user.setPizzas(new ArrayList<>());
         return userRepository.save(user);
     }
 
