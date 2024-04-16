@@ -1,11 +1,11 @@
 package ru.solonchev.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Getter
 @Setter
@@ -27,13 +27,13 @@ public class Pizza {
     @Column(name = "img_link", nullable = false)
     private String imgLink;
     @ManyToMany(mappedBy = "pizzas")
+    @JsonIgnore
     private List<User> users = new ArrayList<>();
 
-    public void addUser(User user, int amount) {
-        users.add(user);
-        for (int i = 0; i < amount; i++) {
-            user.getPizzas().add(this);
-        }
+    public void addUser(User user) {
+        this.users.add(user);
+        user.getPizzas().add(this);
+
     }
 
     public void removeUser(User user) {

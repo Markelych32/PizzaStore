@@ -8,10 +8,6 @@ public class PizzaNotFoundException extends ApiError {
     private static final String description = "Pizza with such id was not found";
 
     public PizzaNotFoundException() {
-        super(
-                PizzaNotFoundException.code,
-                PizzaNotFoundException.message,
-                PizzaNotFoundException.description
-        );
+        super(code, message, description);
     }
 }

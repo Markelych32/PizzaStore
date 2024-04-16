@@ -31,8 +31,8 @@ public class User {
     @ManyToMany
     @JoinTable(
             name = "user_pizza",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "pizza_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "pizza_id")
     )
     private List<Pizza> pizzas = new ArrayList<>();
 }

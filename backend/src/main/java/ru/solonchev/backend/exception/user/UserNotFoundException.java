@@ -8,10 +8,6 @@ public class UserNotFoundException extends ApiError {
     private static final String description = "User with such id was not found";
 
     public UserNotFoundException() {
-        super(
-                UserNotFoundException.code,
-                UserNotFoundException.message,
-                UserNotFoundException.description
-        );
+        super(code, message, description);
     }
 }

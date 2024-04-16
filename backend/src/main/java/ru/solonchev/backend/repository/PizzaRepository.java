@@ -6,4 +6,5 @@ import ru.solonchev.backend.domain.Pizza;
 
 @Repository
 public interface PizzaRepository extends JpaRepository<Pizza,Long> {
+    boolean existsByName(String name);
 }

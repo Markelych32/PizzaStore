@@ -9,10 +9,6 @@ public class UserIsAlreadyExistException extends ApiError {
 
 
     public UserIsAlreadyExistException() {
-        super(
-                UserIsAlreadyExistException.code,
-                UserIsAlreadyExistException.message,
-                UserIsAlreadyExistException.description
-        );
+        super(code, message, description);
     }
 }

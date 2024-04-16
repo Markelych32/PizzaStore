@@ -3,7 +3,9 @@ package ru.solonchev.backend.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.solonchev.backend.domain.Pizza;
+import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.exception.ApiError;
+import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistAtUserException;
 import ru.solonchev.backend.exception.pizza.PizzaAlreadyExistException;
 import ru.solonchev.backend.exception.pizza.PizzaNotFoundException;
 import ru.solonchev.backend.exception.user.UserNotFoundException;
@@ -20,7 +22,7 @@ public class PizzaService {
     private final UserRepository userRepository;
 
     public Pizza createPizza(Pizza pizza) throws PizzaAlreadyExistException {
-        if (pizzaRepository.existsById(pizza.getId())) {
+        if (pizzaRepository.existsByName(pizza.getName())) {
             throw new PizzaAlreadyExistException();
         }
         pizza.setUsers(new ArrayList<>());
@@ -52,16 +54,19 @@ public class PizzaService {
         return userRepository.findById(userId).get().getPizzas();
     }
 
-    public void addPizzaToUser(Long userId, Long pizzaId, int amount) throws ApiError {
+    public void addPizzaToUser(Long userId, Long pizzaId) throws ApiError {
         if (!pizzaRepository.existsById(pizzaId)) {
             throw new PizzaNotFoundException();
         }
         if (!userRepository.existsById(userId)) {
             throw new UserNotFoundException();
         }
-        pizzaRepository.findById(pizzaId).get().addUser(
-                userRepository.findById(userId).get(),
-                amount
-        );
+        Pizza pizza = pizzaRepository.findById(pizzaId).get();
+        User user = userRepository.findById(userId).get();
+        if (user.getPizzas().contains(pizza)) {
+            throw new PizzaAlreadyExistAtUserException();
+        }
+        pizza.addUser(userRepository.findById(userId).get());
+        pizzaRepository.save(pizza);
     }
 }
