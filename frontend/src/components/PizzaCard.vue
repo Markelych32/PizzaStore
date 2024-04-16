@@ -1,32 +1,35 @@
 <template>
   <div class="container">
     <div class="img-container">
-      <img
-        src="https://img.freepik.com/free-photo/thinly-sliced-pepperoni-is-popular-pizza-topping-american-style-pizzerias-isolated-white-background-still-life_639032-229.jpg?t=st=1713267710~exp=1713271310~hmac=9b8d3e4cfb950429e3b1b6ef723f7dd1eecfae730dfece72380dfde5e7c7a766&w=740"
-        alt="Pizza Pepperoni"
-      />
+      <img :src="pizza.imgUrl" alt="Pizza" />
     </div>
     <div class="name">
-      <!-- <h2>{{ pizza.name }}</h2> -->
-      <h2>Пепперони</h2>
+      <h2>{{ pizza.name }}</h2>
+      <!-- <h2>Пепперони</h2> -->
     </div>
     <div class="description">
-      <!-- <p>{{ pizza.description }}</p> -->
-      <p>
+      <p>{{ pizza.description }}</p>
+      <!-- <p>
         Ультра супер пупер мега крутое описание самой вкусной пиццы в нашей
         пиццерии!
-      </p>
+      </p> -->
     </div>
     <div class="price">
-      <!-- <h2>{{ pizza.price }} &#8381;</h2> -->
-      <h2>900 &#8381;</h2>
+      <h2>{{ pizza.price }} &#8381;</h2>
+      <!-- <h2>900 &#8381;</h2> -->
       <button id="add-to-cart-btn">В корзину</button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Pizza",
+  props: { pizza: {} },
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>
