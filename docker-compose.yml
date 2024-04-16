@@ -10,15 +10,4 @@ services:
       POSTGRES_DB: pizza-store
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-    volumes:
-      - postgresql:/var/lib/postgresql/data
-    networks:
-      - backend
-
-
-volumes:
-  postgresql: { }
-
-networks:
-  backend: { }
 
