@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS user_pizza;
 DROP TABLE IF EXISTS pizza;
 CREATE TABLE pizza
 (

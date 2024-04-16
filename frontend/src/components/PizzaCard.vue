@@ -34,7 +34,10 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+  display: flex;
+  flex-direction: column;
   width: 256px;
+  height: 437px;
   font-family: Montserrat;
   img {
     width: 100%;
