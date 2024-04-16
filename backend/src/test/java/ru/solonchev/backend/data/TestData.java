@@ -23,7 +23,7 @@ public final class TestData {
                 .id(13L)
                 .email("test32@gmail.com")
                 .firstName("Mark")
-                .secondName("Solonchev")
+                .lastName("Solonchev")
                 .password("123")
                 .build();
     }
@@ -33,7 +33,7 @@ public final class TestData {
                 .id(19L)
                 .email("test52@gmail.com")
                 .firstName("Artem")
-                .secondName("Loving")
+                .lastName("Loving")
                 .password("321")
                 .build();
     }

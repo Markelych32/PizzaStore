@@ -14,7 +14,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "app-user")
+@Table(name = "_user")
 public class User {
 
     @Id
@@ -26,8 +26,8 @@ public class User {
     private String password;
     @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "second-name", nullable = false)
-    private String secondName;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
     @ManyToMany
     @JoinTable(
             name = "user_pizza",

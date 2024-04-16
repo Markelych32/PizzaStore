@@ -20,7 +20,7 @@ public class UserService {
     private final PizzaRepository pizzaRepository;
 
     public User addUser(User user) throws UserIsAlreadyExistException {
-        if (userRepository.existsById(user.getId())) {
+        if (userRepository.existsByEmail(user.getEmail())) {
             throw new UserIsAlreadyExistException();
         }
         user.setPizzas(new ArrayList<>());
