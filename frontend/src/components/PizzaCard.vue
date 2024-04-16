@@ -40,7 +40,7 @@ export default {
     width: 100%;
   }
   .name {
-    color: #797979;
+    color: #5e5e5e;
     font-weight: 800;
     h2 {
       margin: 0;
