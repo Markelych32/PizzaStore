@@ -33,8 +33,8 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 256px;
-  height: 437px;
+  width: 270px;
+  height: 460px;
   font-family: Montserrat;
   img {
     width: 100%;
