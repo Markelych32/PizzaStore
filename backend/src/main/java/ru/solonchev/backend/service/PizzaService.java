@@ -35,4 +35,11 @@ public class PizzaService {
     public List<Pizza> getAllPizzas() {
         return pizzaRepository.findAll();
     }
+
+    public void deletePizzaById(Long id) throws PizzaNotFoundException {
+        if (!pizzaRepository.existsById(id)) {
+            throw new PizzaNotFoundException();
+        }
+        pizzaRepository.deleteById(id);
+    }
 }

@@ -14,6 +14,10 @@ public final class TestData {
         return 13L;
     }
 
+    public static Long pizza1Id() {
+        return 1L;
+    }
+
     public static User getUser1() {
         return User.builder()
                 .id(13L)

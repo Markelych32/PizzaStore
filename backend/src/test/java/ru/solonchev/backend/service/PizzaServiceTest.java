@@ -84,4 +84,20 @@ public class PizzaServiceTest {
         final List<Pizza> actualPizzas = underTest.getAllPizzas();
         assertEquals(pizzas, actualPizzas);
     }
+
+    @Test
+    void deletingAbsentPizzaShouldThrowException() {
+        final Long id = TestData.pizza1Id();
+        when(pizzaRepository.existsById(anyLong())).thenReturn(false);
+        assertThrows(PizzaNotFoundException.class, () -> underTest.deletePizzaById(id));
+    }
+
+    @Test
+    @SneakyThrows
+    void deletingExistingPizzaShouldDeletePizza() {
+        final Long id = TestData.pizza1Id();
+        when(pizzaRepository.existsById(anyLong())).thenReturn(true);
+        underTest.deletePizzaById(id);
+        verify(pizzaRepository, times(1)).deleteById(anyLong());
+    }
 }
