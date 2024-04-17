@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <Navigation />
-    <router-view />
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <Navigation />
+      <router-view />
+    </div>
     <Footer />
   </div>
 </template>
@@ -24,6 +26,14 @@ body {
   margin: 0;
   padding: 0;
 }
+.wrapper {
+  max-width: 80%;
+  margin: 0 auto;
+  .content-wrapper {
+    min-height: 100vh;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px; /* ширина scrollbar */
 }

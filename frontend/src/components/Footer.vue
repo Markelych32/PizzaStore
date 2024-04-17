@@ -46,9 +46,7 @@ export default {};
   display: flex;
   flex-direction: column;
   font-family: Montserrat;
-  width: 80%;
-  margin: 0 auto;
-  padding: 70px 0;
+  padding-bottom: 70px;
   .footer-content {
     display: flex;
     flex-direction: row;

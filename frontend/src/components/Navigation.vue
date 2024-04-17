@@ -32,9 +32,7 @@ nav {
     margin-left: 10px;
     color: #231f20;
   }
-  width: 80%;
   padding-top: 20px;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;

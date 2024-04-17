@@ -15,8 +15,7 @@
 
 <script>
 import PizzaCard from "@/components/PizzaCard.vue";
-import AXIOS from "../http-common";
-import axios from "axios";
+import AXIOS from "@/http-common.js";
 
 export default {
   name: "HomeView",
@@ -31,8 +30,7 @@ export default {
   },
   methods: {
     axiosGetPizzas() {
-      axios
-        .get("http://localhost:9090/pizza-store/pizzas")
+      AXIOS.get("http://localhost:9090/pizza-store/pizzas")
         .then((response) => {
           this.response = response.data;
         })
@@ -49,8 +47,6 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  width: 80%;
-  margin: 0 auto;
   h1 {
     font-family: Montserrat;
     font-size: 32px;
@@ -62,6 +58,8 @@ export default {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    grid-gap: 10px;
+    padding-bottom: 70px;
   }
   .pizza-man {
     position: fixed;
