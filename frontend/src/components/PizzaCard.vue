@@ -13,7 +13,7 @@
     </div>
     <div class="price">
       <h2>{{ pizza.price }} &#8381;</h2>
-      <button id="add-to-cart-btn">В корзину</button>
+      <button @click="addToCart()" id="add-to-cart-btn">В корзину</button>
     </div>
   </div>
 </template>
@@ -24,6 +24,16 @@ export default {
   props: { pizza: {} },
   data() {
     return {};
+  },
+  methods: {
+    addToCart() {
+      const orderData = {
+        orderName: this.pizza.name,
+        price: this.pizza.price,
+        imgLink: this.pizza.imgLink,
+      };
+      console.log(orderData);
+    },
   },
 };
 </script>

@@ -1,5 +1,7 @@
 <template>
   <div class="wrapper">
+    <img class="pizza-man" src="@/assets/pizza-man.png" alt="" />
+    <img class="pasta-woman" src="@/assets/pasta-woman.png" alt="" />
     <div class="content-wrapper">
       <Navigation />
       <router-view />
@@ -31,6 +33,21 @@ body {
   margin: 0 auto;
   .content-wrapper {
     min-height: 100vh;
+  }
+  .pizza-man {
+    position: fixed;
+    width: 230px;
+    rotate: 15deg;
+    left: -105px;
+    top: 100px;
+  }
+  .pasta-woman {
+    position: fixed;
+    width: 230px;
+    rotate: -20deg;
+    right: -107px;
+    bottom: 100px;
+    transform: scale(-1, 1);
   }
 }
 

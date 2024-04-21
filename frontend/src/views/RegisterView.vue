@@ -8,6 +8,7 @@
           type="text"
           class="name"
           placeholder="Имя"
+          pattern="[a-zA-Zа-яА-Я]"
           required
         />
         <input
@@ -15,6 +16,7 @@
           type="text"
           class="surname"
           placeholder="Фамилия"
+          pattern="[a-zA-Zа-яА-Я]"
         />
         <input
           v-model="formData.email"
@@ -53,15 +55,14 @@
         </div>
       </div>
       <p class="password-valid"></p>
-      <button @click.prevent="register()" class="submit-btn">
-        Регистрация
-      </button>
+      <button @click="register()" class="submit-btn">Регистрация</button>
     </form>
   </div>
 </template>
 
 <script>
 import AXIOS from "@/http-common.js";
+
 export default {
   name: "Register",
   data() {

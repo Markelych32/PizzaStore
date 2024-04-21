@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <img class="pizza-man" src="../assets/pizza-man.png" alt="" />
-    <img class="pasta-woman" src="../assets/pasta-woman.png" alt="" />
     <h1>Пицца</h1>
     <div class="pizza-list">
       <PizzaCard
@@ -60,21 +58,6 @@ export default {
     justify-items: center;
     grid-gap: 10px;
     padding-bottom: 70px;
-  }
-  .pizza-man {
-    position: fixed;
-    width: 230px;
-    rotate: 15deg;
-    left: -105px;
-    top: 100px;
-  }
-  .pasta-woman {
-    position: fixed;
-    width: 230px;
-    rotate: -20deg;
-    right: -107px;
-    bottom: 100px;
-    transform: scale(-1, 1);
   }
 }
 </style>
