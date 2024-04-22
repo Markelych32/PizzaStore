@@ -19,6 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PizzaRepository pizzaRepository;
 
+
     public User addUser(User user) throws UserIsAlreadyExistException {
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new UserIsAlreadyExistException();
@@ -29,6 +30,10 @@ public class UserService {
 
     public User findUserById(Long id) throws UserNotFoundException {
         return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    }
+
+    public boolean existUserByEmail(String email) {
+        return userRepository.existsByEmail(email);
     }
 
     public void deleteUserById(Long id) throws UserNotFoundException {

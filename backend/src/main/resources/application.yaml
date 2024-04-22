@@ -15,3 +15,8 @@ spring:
     change-log: db/changelog/main-changelog.xml
 server:
   port: 9090
+
+store:
+  app:
+    secret: YUyf6UG3IhhoGIYUt9yIoh2IiojpoOtr
+    expirationMs: 600000
