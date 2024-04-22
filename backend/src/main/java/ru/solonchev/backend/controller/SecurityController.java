@@ -37,7 +37,11 @@ public class SecurityController {
         Authentication authentication = null;
         final String email = signinRequest.getUsername();
         try {
-            authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getUsername(), signinRequest.getPassword()));
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            signinRequest.getUsername(),
+                            signinRequest.getPassword()
+                    ));
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -56,11 +60,12 @@ public class SecurityController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Choose another email");
         }
         String hashedPassword = passwordEncoder.encode(signupRequest.getPassword());
-        User user = new User();
-        user.setFirstName(signupRequest.getFirstName());
-        user.setLastName(signupRequest.getLastName());
-        user.setEmail(signupRequest.getEmail());
-        user.setPassword(hashedPassword);
+        User user = User.builder()
+                .firstName(signupRequest.getFirstName())
+                .lastName(signupRequest.getLastName())
+                .email(signupRequest.getEmail())
+                .password(hashedPassword)
+                .build();
         userService.addUser(user);
         return ResponseEntity.ok("Success, Baby");
     }

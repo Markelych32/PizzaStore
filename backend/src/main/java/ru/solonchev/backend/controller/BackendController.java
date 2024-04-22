@@ -57,7 +57,7 @@ public class BackendController {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/user/{userId}/pizza/{pizzaId}")
+    @PostMapping("/user/{userId}/pizza/{pizzaId}")
     public ResponseEntity<Void> addPizzaToUser(
             @PathVariable("userId") Long userId,
             @PathVariable("pizzaId") Long pizzaId
@@ -118,5 +118,4 @@ public class BackendController {
         userService.deleteAllPizzasAtUser(userId);
         return ResponseEntity.ok().build();
     }
-
 }
