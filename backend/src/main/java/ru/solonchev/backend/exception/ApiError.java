@@ -21,5 +21,4 @@ public class ApiError extends RuntimeException {
                 .description(description)
                 .build();
     }
-
 }

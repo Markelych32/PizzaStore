@@ -60,8 +60,7 @@ public class BackendController {
     @PutMapping("/user/{userId}/pizza/{pizzaId}")
     public ResponseEntity<Void> addPizzaToUser(
             @PathVariable("userId") Long userId,
-            @PathVariable("pizzaId") Long pizzaId,
-            @RequestHeader("amount") int amount
+            @PathVariable("pizzaId") Long pizzaId
     ) {
         pizzaService.addPizzaToUser(userId, pizzaId);
         return ResponseEntity.ok().build();

@@ -1,4 +1,4 @@
-package ru.solonchev.backend;
+package ru.solonchev.backend.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.solonchev.backend.JwtCore;
+import ru.solonchev.backend.dto.user.response.LoginResponse;
+import ru.solonchev.backend.jwt.JwtCore;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.dto.user.request.SigninRequest;
 import ru.solonchev.backend.dto.user.request.SignupRequest;
@@ -34,14 +35,19 @@ public class SecurityController {
     @PostMapping("/signin")
     ResponseEntity<?> signIn(@RequestBody SigninRequest signinRequest) {
         Authentication authentication = null;
+        final String email = signinRequest.getUsername();
         try {
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signinRequest.getUsername(), signinRequest.getPassword()));
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtCore.generateToken(authentication);
-        return ResponseEntity.ok(jwt);
+        return ResponseEntity.ok(
+                LoginResponse.builder()
+                        .token(jwtCore.generateToken(authentication))
+                        .userId(userService.findUserByEmail(email).getId())
+                        .build()
+        );
     }
 
     @PostMapping("/signup")

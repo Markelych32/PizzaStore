@@ -1,4 +1,4 @@
-package ru.solonchev.backend;
+package ru.solonchev.backend.jwt;
 
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

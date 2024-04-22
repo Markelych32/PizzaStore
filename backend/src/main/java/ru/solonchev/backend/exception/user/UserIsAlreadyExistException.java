@@ -7,7 +7,6 @@ public class UserIsAlreadyExistException extends ApiError {
     private static final String message = "User is already exist";
     private static final String description = "You are trying to add User with already existing email";
 
-
     public UserIsAlreadyExistException() {
         super(code, message, description);
     }

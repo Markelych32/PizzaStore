@@ -1,4 +1,4 @@
-package ru.solonchev.backend;
+package ru.solonchev.backend.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
