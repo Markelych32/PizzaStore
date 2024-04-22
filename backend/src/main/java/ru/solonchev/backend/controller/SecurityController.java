@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.solonchev.backend.JwtCore;
-import ru.solonchev.backend.SecurityConfig;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.dto.user.request.SigninRequest;
 import ru.solonchev.backend.dto.user.request.SignupRequest;
