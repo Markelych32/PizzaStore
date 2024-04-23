@@ -4,7 +4,7 @@
       <h2 class="login-title">Войти</h2>
       <div class="fields">
         <input
-          v-model="formData.email"
+          v-model="formData.username"
           type="email"
           class="email"
           placeholder="example@pizza.ru"
@@ -25,7 +25,7 @@
         </div>
       </div>
       <p class="password-valid"></p>
-      <button @click="login()" class="submit-btn">Войти</button>
+      <button @click.prevent="login()" class="submit-btn">Войти</button>
     </form>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       formData: {
-        email: "",
+        username: "",
         password: "",
       },
     };
@@ -46,7 +46,15 @@ export default {
   methods: {
     login() {
       const data = JSON.stringify(this.formData);
-      AXIOS.post("http://localhost:9090/login", data).then(() => {});
+      AXIOS.post("http://localhost:9090/auth/signin", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((response) => {
+        localStorage.setItem("userId", response.data.user_id);
+        localStorage.setItem("token", response.data.token);
+        this.$router.push("/");
+      });
     },
     changePasswordVisibility() {
       const password = document.querySelector(".password");
@@ -74,6 +82,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: start;
+    box-shadow: 0px 4px 24px 2px rgba(34, 60, 80, 0.06);
+    padding: 20px 40px;
+    border-radius: 24px;
     .submit-btn {
       padding: 15px 25px;
       background-color: #f7d22d;

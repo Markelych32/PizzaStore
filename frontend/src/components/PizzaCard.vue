@@ -19,20 +19,29 @@
 </template>
 
 <script>
+import AXIOS from "@/http-common.js";
+
 export default {
   name: "Pizza",
   props: { pizza: {} },
   data() {
-    return {};
+    return {
+      userId: localStorage.getItem("userId"),
+    };
   },
   methods: {
     addToCart() {
-      const orderData = {
-        orderName: this.pizza.name,
-        price: this.pizza.price,
-        imgLink: this.pizza.imgLink,
-      };
-      console.log(orderData);
+      AXIOS.post(
+        "http://localhost:9090/pizza-store/user/" +
+          this.userId +
+          "/pizza/" +
+          this.pizza.id,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
     },
   },
 };

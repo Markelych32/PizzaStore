@@ -4,19 +4,17 @@
       <h2 class="register-title">Регистрация</h2>
       <div class="fields">
         <input
-          v-model="formData.name"
+          v-model="formData.first_name"
           type="text"
           class="name"
           placeholder="Имя"
-          pattern="[a-zA-Zа-яА-Я]"
           required
         />
         <input
-          v-model="formData.surname"
+          v-model="formData.last_name"
           type="text"
           class="surname"
           placeholder="Фамилия"
-          pattern="[a-zA-Zа-яА-Я]"
         />
         <input
           v-model="formData.email"
@@ -68,10 +66,10 @@ export default {
   data() {
     return {
       formData: {
-        name: "",
-        surname: "",
         email: "",
         password: "",
+        first_name: "",
+        last_name: "",
       },
       passwordAgain: "",
     };
@@ -79,9 +77,16 @@ export default {
   methods: {
     register() {
       const data = JSON.stringify(this.formData);
+      console.log(data);
       const passwordsCorrect = this.checkPasswords();
       if (passwordsCorrect) {
-        //AXIOS.post("http://localhost:9090/register", data);
+        AXIOS.post("http://localhost:9090/auth/signup", data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then(() => {
+          this.$router.push("/");
+        });
       }
     },
     changePasswordVisibility(n) {
@@ -123,6 +128,9 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: start;
+    box-shadow: 0px 4px 24px 2px rgba(34, 60, 80, 0.06);
+    padding: 20px 40px;
+    border-radius: 24px;
     .submit-btn {
       padding: 15px 25px;
       background-color: #f7d22d;
