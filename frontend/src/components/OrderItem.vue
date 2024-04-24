@@ -35,7 +35,12 @@ export default {
         "http://localhost:9090/pizza-store/user/" +
           localStorage.getItem("userId") +
           "/pizza/" +
-          this.order.id
+          this.order.id,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
       );
     },
     addOne(event) {
