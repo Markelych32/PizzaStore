@@ -14,10 +14,13 @@ import ru.solonchev.backend.service.UserService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8081", methods = 
+    {RequestMethod.POST,
+    RequestMethod.PUT,
+    RequestMethod.GET,
+    RequestMethod.DELETE})
 @RequestMapping("/pizza-store")
 @RequiredArgsConstructor
-@Slf4j
 public class BackendController {
 
     private final UserService userService;
