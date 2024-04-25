@@ -14,7 +14,6 @@ import ru.solonchev.backend.service.UserService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8081")
 @RequestMapping("/pizza-store")
 @RequiredArgsConstructor
 @Slf4j
