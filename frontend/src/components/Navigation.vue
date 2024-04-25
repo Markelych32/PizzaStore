@@ -9,16 +9,36 @@
       />
       <h1>Pizza Store</h1></router-link
     >
-    <div class="container">
+    <div :key="this.authorized" class="container">
       <router-link class="cart" to="/cart">Корзина</router-link>
-      <router-link class="login" to="/login">Войти</router-link>
-      <router-link class="register" to="/register">Регистрация</router-link>
+      <router-link v-if="!this.authorized" class="login" to="/login"
+        >Войти</router-link
+      >
+      <router-link v-if="!this.authorized" class="register" to="/register"
+        >Регистрация</router-link
+      >
+      <button v-if="this.authorized" @click="logout()" class="logout">
+        Выйти
+      </button>
+      <div v-if="this.authorized" class="user">User</div>
     </div>
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      authorized: localStorage.getItem("token"),
+    };
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem("token");
+      //this.authorized = null;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
