@@ -52,17 +52,18 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 8px;
-  width: 260px;
+  padding: 20px;
+  width: 270px;
   height: 460px;
   font-family: Montserrat;
-  border-radius: 10px;
-  box-shadow: 0px 0px 0px 0px transparent;
+  border-radius: 20px;
+  transition: 0.1s;
   &:hover {
-    box-shadow: 0px 0px 20px 0px #e2e2e2;
+    box-shadow: 0px 2px 24px 2px #00000015;
   }
   img {
     width: 100%;
+    border-radius: 25%;
   }
   .name {
     color: #5e5e5e;

@@ -53,7 +53,9 @@
         </div>
       </div>
       <p class="password-valid"></p>
-      <button @click="register()" class="submit-btn">Регистрация</button>
+      <button @click.prevent="register()" class="submit-btn">
+        Регистрация
+      </button>
     </form>
   </div>
 </template>
@@ -85,7 +87,7 @@ export default {
             "Content-Type": "application/json",
           },
         }).then(() => {
-          this.$router.push("/");
+          this.$router.push("/login");
         });
       }
     },

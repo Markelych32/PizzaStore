@@ -65,6 +65,7 @@ export default {
   width: 25%;
   img {
     width: 100%;
+    border-radius: 25%;
   }
 }
 .order-pizza {
@@ -80,6 +81,12 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding-right: 30px;
+  border-radius: 20px;
+  transition: 0.1s;
+  &:hover {
+    box-shadow: 0px 2px 24px 2px #00000015;
+  }
 
   .order-text {
     max-width: 400px;
@@ -97,7 +104,7 @@ export default {
   }
   .price {
     color: #f7d22d;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 800;
     width: 100px;
   }

@@ -35,6 +35,7 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       //this.authorized = null;
     },
   },
@@ -84,6 +85,15 @@ nav {
     text-decoration: none;
     display: block;
     color: #231f20;
+  }
+  .logout {
+    background: transparent;
+    border: none;
+    color: #696f7a;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
   }
 }
 </style>

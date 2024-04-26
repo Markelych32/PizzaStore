@@ -4,7 +4,14 @@
     <div v-if="!checkAuthorization()" class="unauthorized">
       Вы не авторизованы!
     </div>
-    <div v-else class="orders-list">
+    <div
+      v-if="!this.response[0] && checkAuthorization()"
+      :key="this.response"
+      class="cart-empty"
+    >
+      Корзина пуста!
+    </div>
+    <div v-if="checkAuthorization()" class="orders-list">
       <OrderItem
         v-for="order in this.response"
         :key="order.id"
@@ -34,16 +41,18 @@ export default {
     },
   },
   created() {
-    AXIOS.get(
-      "http://localhost:9090/pizza-store/users/" + this.userId + "/pizzas",
-      {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      }
-    ).then((response) => {
-      this.response = response.data;
-    });
+    if (localStorage.getItem("token")) {
+      AXIOS.get(
+        "http://localhost:9090/pizza-store/users/" + this.userId + "/pizzas",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      ).then((response) => {
+        this.response = response.data;
+      });
+    }
   },
 };
 </script>
