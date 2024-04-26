@@ -36,6 +36,7 @@ export default {
           this.userId +
           "/pizza/" +
           this.pizza.id,
+        {},
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),

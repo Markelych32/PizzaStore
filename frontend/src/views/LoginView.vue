@@ -50,14 +50,12 @@ export default {
         headers: {
           "Content-Type": "application/json",
         },
-      })
-        .then((response) => {
-          console.log(response);
-          localStorage.setItem("userId", response.data.user_id);
-          localStorage.setItem("token", response.data.token);
-          this.$router.push("/");
-        })
-        .catch(e);
+      }).then((response) => {
+        console.log(response);
+        localStorage.setItem("userId", response.data.user_id);
+        localStorage.setItem("token", response.data.token);
+        this.$router.push("/");
+      });
     },
     changePasswordVisibility() {
       const password = document.querySelector(".password");

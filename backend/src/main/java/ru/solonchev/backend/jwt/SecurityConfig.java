@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
@@ -75,11 +76,15 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors(Customizer.withDefaults()) // by default use a bean by the name  of corsConfigurationSource
+                // .cors(httpSecurityCorsConfigurer ->
+                //         httpSecurityCorsConfigurer.configurationSource(request ->
+                //                 new CorsConfiguration().applyPermitDefaultValues()))
+
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(httpSecurityCorsConfigurer ->
-                        httpSecurityCorsConfigurer.configurationSource(request ->
-                                new CorsConfiguration().applyPermitDefaultValues())
-                )
+                // .cors(httpSecurityCorsConfigurer ->
+                //         httpSecurityCorsConfigurer.configurationSource(request ->
+                //                 new CorsConfiguration().applyPermitDefaultValues())
+                // )
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 )
