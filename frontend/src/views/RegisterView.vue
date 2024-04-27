@@ -9,12 +9,14 @@
           class="name"
           placeholder="Имя"
           required
+          pattern="[A-Za-zА-Яа-яЁё]{2,40}"
         />
         <input
           v-model="formData.last_name"
           type="text"
           class="surname"
           placeholder="Фамилия"
+          pattern="[A-Za-zА-Яа-яЁё]{2,40}"
         />
         <input
           v-model="formData.email"
@@ -22,6 +24,7 @@
           class="email"
           placeholder="example@pizza.ru"
           required
+          pattern="^\S+@\S+\.\S+$"
         />
         <div class="password-wrapper">
           <input
@@ -31,6 +34,7 @@
             class="password"
             placeholder="Пароль"
             required
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
           />
           <i
             @click="changePasswordVisibility(0)"
@@ -45,6 +49,7 @@
             class="repeat-password password"
             placeholder="Повторите пароль"
             required
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
           />
           <i
             @click="changePasswordVisibility(1)"
@@ -77,11 +82,17 @@ export default {
     };
   },
   methods: {
+    checkInputs() {
+      const requiredInputs = Array.from(document.querySelectorAll(":required"));
+      for (const input of requiredInputs) {
+        if (input.checkValidity() === false) return false;
+      }
+      return true;
+    },
     register() {
       const data = JSON.stringify(this.formData);
-      console.log(data);
       const passwordsCorrect = this.checkPasswords();
-      if (passwordsCorrect) {
+      if (passwordsCorrect && this.checkInputs()) {
         AXIOS.post("http://localhost:9090/auth/signup", data, {
           headers: {
             "Content-Type": "application/json",
@@ -89,6 +100,8 @@ export default {
         }).then(() => {
           this.$router.push("/login");
         });
+      } else {
+        alert("Неверные данные!");
       }
     },
     changePasswordVisibility(n) {
@@ -171,6 +184,12 @@ export default {
         &:focus {
           border: 1px solid #231f20;
         }
+        &:invalid:not(:placeholder-shown) {
+          border-color: red;
+        }
+        &:valid:not(:placeholder-shown) {
+          border-color: green;
+        }
       }
       .password-wrapper {
         position: relative;
@@ -183,6 +202,7 @@ export default {
     top: 50%;
     color: #bbbbbb;
     cursor: pointer;
+    opacity: 0.3;
   }
 }
 </style>

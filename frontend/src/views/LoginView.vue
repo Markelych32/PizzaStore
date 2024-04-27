@@ -50,12 +50,16 @@ export default {
         headers: {
           "Content-Type": "application/json",
         },
-      }).then((response) => {
-        console.log(response);
-        localStorage.setItem("userId", response.data.user_id);
-        localStorage.setItem("token", response.data.token);
-        this.$router.push("/");
-      });
+      })
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("userId", response.data.user_id);
+          localStorage.setItem("token", response.data.token);
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          alert("Неверный логин или пароль!");
+        });
     },
     changePasswordVisibility() {
       const password = document.querySelector(".password");

@@ -31,18 +31,22 @@ export default {
   },
   methods: {
     addToCart() {
-      AXIOS.post(
-        "http://localhost:9090/pizza-store/user/" +
-          this.userId +
-          "/pizza/" +
-          this.pizza.id,
-        {},
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+      if (localStorage.getItem("token")) {
+        AXIOS.post(
+          "http://localhost:9090/pizza-store/user/" +
+            this.userId +
+            "/pizza/" +
+            this.pizza.id,
+          {},
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
+      } else {
+        alert("Вы не авторизованы!");
+      }
     },
   },
 };

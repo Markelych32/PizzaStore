@@ -36,7 +36,7 @@ export default {
     logout() {
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
-      //this.authorized = null;
+      this.authorized = null;
     },
   },
 };
