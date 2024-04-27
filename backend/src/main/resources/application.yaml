@@ -19,4 +19,4 @@ server:
 store:
   app:
     secret: YUyf6UG3IhhoGIYUt9yIoh2IiojpoOtr
-    expirationMs: 600000
+    expirationMs: 1800000

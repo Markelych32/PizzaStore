@@ -43,7 +43,16 @@ export default {
               Authorization: "Bearer " + localStorage.getItem("token"),
             },
           }
-        );
+        ).catch((e) => {
+          if (localStorage.getItem("token") && e.response.status == 401) {
+            alert("Время вашей сессии истекло!");
+          } else if (
+            localStorage.getItem("token") &&
+            e.response.status == 400
+          ) {
+            alert("Пицца уже в корзине!");
+          }
+        });
       } else {
         alert("Вы не авторизованы!");
       }

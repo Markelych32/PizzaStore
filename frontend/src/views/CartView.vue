@@ -4,11 +4,7 @@
     <div v-if="!checkAuthorization()" class="unauthorized">
       Вы не авторизованы!
     </div>
-    <div
-      v-if="!this.response[0] && checkAuthorization()"
-      :key="this.response"
-      class="cart-empty"
-    >
+    <div v-if="!this.response[0] && checkAuthorization()" class="cart-empty">
       Корзина пуста!
     </div>
     <div v-if="checkAuthorization()" class="orders-list">
@@ -49,9 +45,15 @@ export default {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
-      ).then((response) => {
-        this.response = response.data;
-      });
+      )
+        .then((response) => {
+          this.response = response.data;
+        })
+        .catch((e) => {
+          if (localStorage.getItem("token")) {
+            alert("Время вашей сессии истекло!");
+          }
+        });
     }
   },
 };

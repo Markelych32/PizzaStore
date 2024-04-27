@@ -44,7 +44,11 @@ export default {
       );
     },
     addOne(event) {
-      if (this.amount >= 1) this.amount++;
+      if (this.amount >= 1 && this.amount < 20) this.amount++;
+      if (this.amount === 20) {
+        event.target.disabled = true;
+        event.target.classList.add("disabled");
+      }
       const subOne = event.target.previousSibling.previousSibling;
       subOne.disabled = false;
       subOne.classList.remove("disabled");
@@ -55,6 +59,11 @@ export default {
         event.target.disabled = true;
         event.target.classList.add("disabled");
       }
+      if (this.amount <= 20) {
+        const addOne = event.target.nextSibling.nextSibling;
+        addOne.disabled = false;
+        addOne.classList.remove("disabled");
+      }
     },
   },
 };
@@ -62,10 +71,10 @@ export default {
 
 <style lang="scss" scoped>
 .img-container {
-  width: 25%;
+  width: 22%;
   img {
     width: 100%;
-    border-radius: 25%;
+    border-radius: 50%;
   }
 }
 .order-pizza {
@@ -84,6 +93,7 @@ export default {
   padding-right: 30px;
   border-radius: 20px;
   transition: 0.1s;
+  margin-bottom: 20px;
   &:hover {
     box-shadow: 0px 2px 24px 2px #00000015;
   }
@@ -104,9 +114,10 @@ export default {
   }
   .price {
     color: #f7d22d;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 800;
-    width: 100px;
+    width: 120px;
+    text-align: center;
   }
   .counter-container {
     display: flex;

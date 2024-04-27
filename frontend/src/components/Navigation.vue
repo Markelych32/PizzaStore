@@ -20,7 +20,7 @@
       <button v-if="this.authorized" @click="logout()" class="logout">
         Выйти
       </button>
-      <div v-if="this.authorized" class="user">User</div>
+      <div v-if="this.authorized" class="user">Кабинет</div>
     </div>
   </nav>
 </template>
