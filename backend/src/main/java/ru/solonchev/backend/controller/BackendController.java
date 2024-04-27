@@ -80,7 +80,12 @@ public class BackendController {
 
     @GetMapping("/pizzas/order/name")
     public ResponseEntity<List<Pizza>> getAllPizzasOrderedByName() {
-        return ResponseEntity.ok().body(pizzaService.getPizzasOfUserOrderedByName());
+        return ResponseEntity.ok().body(pizzaService.getPizzasOrderedByName());
+    }
+
+    @GetMapping("/pizzas/order/price")
+    public ResponseEntity<List<Pizza>> getAllPizzasOrderedByPrice() {
+        return ResponseEntity.ok().body(pizzaService.getPizzasOrderedByPrice());
     }
 
     @GetMapping("/users")

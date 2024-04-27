@@ -15,7 +15,6 @@ import ru.solonchev.backend.repository.PizzaRepository;
 import ru.solonchev.backend.repository.UserRepository;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -89,7 +88,11 @@ public class PizzaService {
         pizzaRepository.save(pizza);
     }
 
-    public List<Pizza> getPizzasOfUserOrderedByName() {
+    public List<Pizza> getPizzasOrderedByName() {
         return pizzaRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
+    }
+
+    public List<Pizza> getPizzasOrderedByPrice() {
+        return pizzaRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
     }
 }
