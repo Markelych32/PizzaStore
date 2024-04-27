@@ -84,10 +84,11 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/pizza-store/pizzas/**").permitAll()
-                        .requestMatchers("/pizza-store/email").permitAll()
-                        .requestMatchers("/pizza-store/**").authenticated()
+//                        .requestMatchers("/auth/**").permitAll()
+//                        .requestMatchers("/pizza-store/email").permitAll()
+//                        .requestMatchers("/pizza-store/pizzas/**").permitAll()
+//                        .requestMatchers("/pizza-store/email").permitAll()
+//                        .requestMatchers("/pizza-store/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);

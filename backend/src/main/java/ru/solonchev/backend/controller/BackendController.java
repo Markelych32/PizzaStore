@@ -7,6 +7,7 @@ import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.dto.pizza.PizzaAddRequest;
 import ru.solonchev.backend.dto.user.request.UserAddRequest;
+import ru.solonchev.backend.service.EmailService;
 import ru.solonchev.backend.service.PizzaService;
 import ru.solonchev.backend.service.UserService;
 
@@ -20,6 +21,7 @@ public class BackendController {
 
     private final UserService userService;
     private final PizzaService pizzaService;
+    private final EmailService emailService;
 
     private User userAddRequestToUser(UserAddRequest userAddRequest) {
         return User.builder()
@@ -44,6 +46,15 @@ public class BackendController {
             @RequestBody UserAddRequest user
     ) {
         userService.addUser(userAddRequestToUser(user));
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/user/{user_id}/email")
+    public ResponseEntity<Void> sendEmail(
+            @PathVariable("user_id") Long userId,
+            @RequestHeader("Receiver") String receiver
+    ) {
+        emailService.sendEmail(userId, receiver);
         return ResponseEntity.ok().build();
     }
 
