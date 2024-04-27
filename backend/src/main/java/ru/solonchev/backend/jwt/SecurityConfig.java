@@ -76,15 +76,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors(Customizer.withDefaults()) // by default use a bean by the name  of corsConfigurationSource
-                // .cors(httpSecurityCorsConfigurer ->
-                //         httpSecurityCorsConfigurer.configurationSource(request ->
-                //                 new CorsConfiguration().applyPermitDefaultValues()))
-
                 .csrf(AbstractHttpConfigurer::disable)
-                // .cors(httpSecurityCorsConfigurer ->
-                //         httpSecurityCorsConfigurer.configurationSource(request ->
-                //                 new CorsConfiguration().applyPermitDefaultValues())
-                // )
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 )
@@ -93,7 +85,8 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/pizza-store/pizzas").permitAll()
+                        .requestMatchers("/pizza-store/pizzas/**").permitAll()
+                        .requestMatchers("/pizza-store/email").permitAll()
                         .requestMatchers("/pizza-store/**").authenticated()
                         .anyRequest().permitAll()
                 )

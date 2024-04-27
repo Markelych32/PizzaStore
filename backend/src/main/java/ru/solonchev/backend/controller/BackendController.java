@@ -1,7 +1,6 @@
 package ru.solonchev.backend.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.solonchev.backend.domain.Pizza;
@@ -77,6 +76,11 @@ public class BackendController {
         return ResponseEntity.ok(
                 pizzaService.getAllPizzas()
         );
+    }
+
+    @GetMapping("/pizzas/order/name")
+    public ResponseEntity<List<Pizza>> getAllPizzasOrderedByName() {
+        return ResponseEntity.ok().body(pizzaService.getPizzasOfUserOrderedByName());
     }
 
     @GetMapping("/users")

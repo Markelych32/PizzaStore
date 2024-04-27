@@ -1,6 +1,7 @@
 package ru.solonchev.backend.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
@@ -14,6 +15,7 @@ import ru.solonchev.backend.repository.PizzaRepository;
 import ru.solonchev.backend.repository.UserRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -85,5 +87,9 @@ public class PizzaService {
         }
         pizza.removeUser(user);
         pizzaRepository.save(pizza);
+    }
+
+    public List<Pizza> getPizzasOfUserOrderedByName() {
+        return pizzaRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 }
