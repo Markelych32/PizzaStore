@@ -14,4 +14,6 @@ public class LoginResponse {
     private String token;
     @JsonProperty("user_id")
     private Long userId;
+    @JsonProperty("email")
+    private String email;
 }

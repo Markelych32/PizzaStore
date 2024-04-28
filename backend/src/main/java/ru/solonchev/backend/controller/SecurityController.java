@@ -47,6 +47,7 @@ public class SecurityController {
                 LoginResponse.builder()
                         .token(jwtCore.generateToken(authentication))
                         .userId(userService.findUserByEmail(email).getId())
+                        .email(email)
                         .build()
         );
     }
