@@ -33,7 +33,7 @@
           <i class="pizza-icon fa-solid fa-pizza-slice"></i>
         </p>
         <h2>Сумма заказа: {{ this.orderAmount }} &#8381;</h2>
-        <button class="make-order">Оформить заказ</button>
+        <button @click="makeOrder()" class="make-order">Оформить заказ</button>
       </div>
     </div>
   </div>
@@ -77,6 +77,18 @@ export default {
         "http://localhost:9090/pizza-store/user/" + this.userId + "/pizza",
         {
           headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      );
+    },
+    makeOrder() {
+      AXIOS.post(
+        "http://localhost:9090/pizza-store/user/" + this.userId + "/email",
+        {},
+        {
+          headers: {
+            Receiver: localStorage.getItem("userEmail"),
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }

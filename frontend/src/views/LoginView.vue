@@ -54,6 +54,7 @@ export default {
         .then((response) => {
           console.log(response);
           localStorage.setItem("userId", response.data.user_id);
+          localStorage.setItem("userEmail", response.data.email);
           localStorage.setItem("token", response.data.token);
           this.$router.push("/");
         })
