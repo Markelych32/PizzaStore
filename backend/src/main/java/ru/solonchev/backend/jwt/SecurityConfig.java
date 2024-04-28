@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
@@ -84,11 +83,9 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers("/auth/**").permitAll()
-//                        .requestMatchers("/pizza-store/email").permitAll()
-//                        .requestMatchers("/pizza-store/pizzas/**").permitAll()
-//                        .requestMatchers("/pizza-store/email").permitAll()
-//                        .requestMatchers("/pizza-store/**").authenticated()
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/pizza-store/pizzas/**").permitAll()
+                        .requestMatchers("/pizza-store/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
