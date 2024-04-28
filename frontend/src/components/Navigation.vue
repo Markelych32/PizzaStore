@@ -10,7 +10,7 @@
       <h1>Pizza Store</h1></router-link
     >
     <div :key="this.authorized" class="container">
-      <router-link class="cart" to="/cart">Корзина</router-link>
+      <router-link class="cart" to="/cart"> Корзина </router-link>
       <router-link v-if="!this.authorized" class="login" to="/login"
         >Войти</router-link
       >
@@ -63,7 +63,7 @@ nav {
   font-size: 16px;
   .container {
     display: flex;
-    width: 30%;
+    width: 35%;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -74,9 +74,19 @@ nav {
     align-items: center;
   }
   .cart {
+    position: relative;
     padding: 10px 15px;
     background-color: #f7d22d;
     border-radius: 8px;
+    .pizza-inside {
+      position: absolute;
+      right: -3px;
+      top: -3px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #f02e14;
+    }
   }
   .login {
     color: #696f7a;

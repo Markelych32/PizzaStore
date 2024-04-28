@@ -67,7 +67,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  width: 270px;
+  width: 250px;
   height: 460px;
   font-family: Montserrat;
   border-radius: 20px;

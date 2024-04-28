@@ -8,12 +8,15 @@
       <div class="description">{{ this.order.description }}</div>
     </div>
     <div class="counter-container">
-      <button @click="subOne($event)" class="sub-one">–</button>
+      <button @click="subOne($event)" class="sub-one button">–</button>
       <div class="amount">{{ this.amount }}</div>
-      <button @click="addOne($event)" class="add-one">+</button>
+      <button @click="addOne($event)" class="add-one button">+</button>
     </div>
     <div class="price">{{ this.order.price * this.amount }} &#8381;</div>
-    <i @click="removeItem($event)" class="fa-regular fa-circle-xmark"></i>
+    <i
+      @click="removeItem($event)"
+      class="rem-item fa-regular fa-circle-xmark"
+    ></i>
   </div>
 </template>
 
@@ -30,7 +33,9 @@ export default {
   },
   methods: {
     removeItem(event) {
-      event.target.closest(".order-item").style.display = "none";
+      document
+        .querySelector(".orders-list")
+        .removeChild(event.target.closest(".order-item"));
       AXIOS.delete(
         "http://localhost:9090/pizza-store/user/" +
           localStorage.getItem("userId") +
@@ -99,7 +104,7 @@ export default {
   }
 
   .order-text {
-    max-width: 400px;
+    max-width: 350px;
   }
   .order-name {
     color: #0e0c0d;
@@ -114,7 +119,7 @@ export default {
   }
   .price {
     color: #f7d22d;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 800;
     width: 120px;
     text-align: center;
@@ -131,13 +136,13 @@ export default {
       padding: 10px 15px;
       color: #696f7a;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
     }
     .amount {
       text-align: center;
-      width: 30px;
-      font-size: 20px;
+      width: 25px;
+      font-size: 18px;
       color: #696f7a;
       font-weight: 700;
     }
@@ -146,7 +151,7 @@ export default {
     }
   }
   .fa-circle-xmark {
-    font-size: 30px;
+    font-size: 28px;
     transition: 0.1s;
     cursor: pointer;
     color: #696f7a;
