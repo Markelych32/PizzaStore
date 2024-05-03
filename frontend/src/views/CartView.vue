@@ -92,7 +92,13 @@ export default {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
         }
-      );
+      ).then(() => {
+        this.clearCart();
+        alert(
+          "Заказ оформлен! На вашу почту отправлено письмо с подробной информацией."
+        );
+        location.reload();
+      });
     },
   },
   created() {
