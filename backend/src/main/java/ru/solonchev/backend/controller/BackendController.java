@@ -7,6 +7,7 @@ import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
 import ru.solonchev.backend.dto.pizza.PizzaAddRequest;
 import ru.solonchev.backend.dto.user.request.UserAddRequest;
+import ru.solonchev.backend.dto.user.response.UserResponse;
 import ru.solonchev.backend.service.EmailService;
 import ru.solonchev.backend.service.PizzaService;
 import ru.solonchev.backend.service.UserService;
@@ -76,10 +77,13 @@ public class BackendController {
     }
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-        return ResponseEntity.ok().body(
-                userService.findUserById(userId)
-        );
+    public ResponseEntity<UserResponse> getUserById(@PathVariable Long userId) {
+        User user = userService.findUserById(userId);
+        return ResponseEntity.ok().body(new UserResponse(
+                user.getEmail(),
+                user.getFirstName(),
+                user.getLastName()
+        ));
     }
 
     @GetMapping("/pizzas")
