@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AXIOS = axios.create({
-  baseURL: `http://localhost:8081`,
+  baseURL: `https://pizza-store-backend-614r.onrender.com:8081`,
   headers: {
     "Access-Control-Allow-Origin":
       "https://pizza-store-backend-614r.onrender.com:9090",
