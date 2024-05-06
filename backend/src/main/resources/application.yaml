@@ -18,9 +18,9 @@ spring:
       text: no-reply
   datasource:
     driver-class-name: org.postgresql.Driver
-    password: password
-    username: user
-    url: jdbc:postgresql://localhost:5555/pizza-store
+    password: dPtzXG8SV5swRzQ7iPDPD66SBldeFrcU
+    username: mark
+    url: jdbc:postgresql://dpg-cosc8ga1hbls73fi2vr0-a.frankfurt-postgres.render.com:5432/pizza_store
   jpa:
     properties:
       hibernate:
