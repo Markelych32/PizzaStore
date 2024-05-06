@@ -60,6 +60,7 @@ export default {
       this.orderAmount = 0;
       this.orderCount = 0;
       const amounts = document.querySelectorAll(".price");
+      console.log(amounts);
       const counters = document.querySelectorAll(".amount");
       for (const amount of amounts) {
         this.orderAmount += Number(amount.innerText.split(" ")[0]);
@@ -67,6 +68,7 @@ export default {
       for (const counter of counters) {
         this.orderCount += Number(counter.innerText);
       }
+      console.log("updated " + this.orderAmount + " " + this.orderCount);
     },
     checkAuthorization() {
       return localStorage.getItem("token");
@@ -119,6 +121,19 @@ export default {
       )
         .then((response) => {
           this.response = response.data;
+          setTimeout(() => {
+            this.updateCart();
+            for (const element of document.querySelectorAll(".button")) {
+              element.addEventListener("click", () => {
+                this.updateCart();
+              });
+            }
+            for (const element of document.querySelectorAll(".rem-item")) {
+              element.addEventListener("click", () => {
+                this.updateCart();
+              });
+            }
+          }, 100);
         })
         .catch((e) => {
           if (localStorage.getItem("token")) {
@@ -127,21 +142,6 @@ export default {
           }
         });
     }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.updateCart();
-      for (const element of document.querySelectorAll(".button")) {
-        element.addEventListener("click", () => {
-          this.updateCart();
-        });
-      }
-      for (const element of document.querySelectorAll(".rem-item")) {
-        element.addEventListener("click", () => {
-          this.updateCart();
-        });
-      }
-    }, 500);
   },
 };
 </script>
