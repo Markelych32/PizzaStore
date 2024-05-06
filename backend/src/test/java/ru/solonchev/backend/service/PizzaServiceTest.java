@@ -37,7 +37,7 @@ public class PizzaServiceTest {
     @SneakyThrows
     void creatingExistingPizzaShouldThrowException() {
         final Pizza pizza = TestData.getPizza1();
-        when(pizzaRepository.existsById(anyLong())).thenReturn(true);
+        when(pizzaRepository.existsByName(anyString())).thenReturn(true);
         assertThrows(PizzaAlreadyExistException.class, () -> underTest.createPizza(pizza));
     }
 
@@ -45,7 +45,6 @@ public class PizzaServiceTest {
     @SneakyThrows
     void creatingNewPizzaShouldCreateNewPizza() {
         final Pizza pizza = TestData.getPizza1();
-        when(pizzaRepository.existsById(anyLong())).thenReturn(false);
         when(pizzaRepository.save(any(Pizza.class))).thenReturn(pizza);
 
         Pizza actualPizza = underTest.createPizza(pizza);
