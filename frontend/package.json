@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "test:dev": "http-server dist -p 8081 -c 1 --push-state"
   },
   "dependencies": {
     "axios": "^1.6.8",
@@ -17,7 +18,8 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "sass": "^1.32.7",
-    "sass-loader": "^12.0.0"
+    "sass-loader": "^12.0.0",
+    "spa-http-server": "0.9.0"
   },
   "browserslist": [
     "> 1%",
