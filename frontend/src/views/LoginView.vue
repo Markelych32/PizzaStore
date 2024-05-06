@@ -47,7 +47,7 @@ export default {
     login() {
       const data = JSON.stringify(this.formData);
       AXIOS.post(
-        "https://pizza-store-backend-614r.onrender.com/auth/signin",
+        "https://pizza-store-backend-ghcr-v1.onrender.com/auth/signin",
         data,
         {
           headers: {

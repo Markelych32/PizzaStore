@@ -94,7 +94,7 @@ export default {
       const passwordsCorrect = this.checkPasswords();
       if (passwordsCorrect && this.checkInputs()) {
         AXIOS.post(
-          "https://pizza-store-backend-614r.onrender.com/auth/signup",
+          "https://pizza-store-backend-ghcr-v1.onrender.com/auth/signup",
           data,
           {
             headers: {

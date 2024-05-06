@@ -37,7 +37,7 @@ export default {
         .querySelector(".orders-list")
         .removeChild(event.target.closest(".order-item"));
       AXIOS.delete(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/user/" +
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/user/" +
           localStorage.getItem("userId") +
           "/pizza/" +
           this.order.id,

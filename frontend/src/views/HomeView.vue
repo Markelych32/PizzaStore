@@ -40,7 +40,7 @@ export default {
   methods: {
     axiosGetPizzas() {
       AXIOS.get(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/pizzas"
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/pizzas"
       )
         .then((response) => {
           this.response = response.data;
@@ -59,7 +59,7 @@ export default {
     sortByName(event) {
       this.activateBtn(event);
       AXIOS.get(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/pizzas/order/name"
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/pizzas/order/name"
       )
         .then((response) => {
           this.response = response.data;
@@ -71,7 +71,7 @@ export default {
     sortByPrice(event) {
       this.activateBtn(event);
       AXIOS.get(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/pizzas/order/price"
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/pizzas/order/price"
       )
         .then((response) => {
           this.response = response.data;

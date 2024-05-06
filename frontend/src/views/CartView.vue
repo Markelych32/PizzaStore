@@ -74,7 +74,7 @@ export default {
     clearCart() {
       this.response = {};
       AXIOS.delete(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/user/" +
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/user/" +
           this.userId +
           "/pizza",
         {
@@ -86,7 +86,7 @@ export default {
     },
     makeOrder() {
       AXIOS.post(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/user/" +
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/user/" +
           this.userId +
           "/email",
         {},
@@ -108,7 +108,7 @@ export default {
   created() {
     if (localStorage.getItem("token")) {
       AXIOS.get(
-        "https://pizza-store-backend-614r.onrender.com/pizza-store/users/" +
+        "https://pizza-store-backend-ghcr-v1.onrender.com/pizza-store/users/" +
           this.userId +
           "/pizzas",
         {
