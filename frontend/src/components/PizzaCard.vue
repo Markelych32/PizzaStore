@@ -33,7 +33,7 @@ export default {
     addToCart() {
       if (localStorage.getItem("token")) {
         AXIOS.post(
-          "http://localhost:9090/pizza-store/user/" +
+          "https://pizza-store-backend-614r.onrender.com/pizza-store/user/" +
             this.userId +
             "/pizza/" +
             this.pizza.id,

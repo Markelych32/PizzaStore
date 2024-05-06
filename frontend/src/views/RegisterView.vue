@@ -93,11 +93,15 @@ export default {
       const data = JSON.stringify(this.formData);
       const passwordsCorrect = this.checkPasswords();
       if (passwordsCorrect && this.checkInputs()) {
-        AXIOS.post("http://localhost:9090/auth/signup", data, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then(() => {
+        AXIOS.post(
+          "https://pizza-store-backend-614r.onrender.com/auth/signup",
+          data,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        ).then(() => {
           this.$router.push("/login");
         });
       } else {

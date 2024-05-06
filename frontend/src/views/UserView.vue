@@ -24,7 +24,7 @@ export default {
   },
   created() {
     AXIOS.get(
-      "http://localhost:9090/pizza-store/users/" +
+      "https://pizza-store-backend-614r.onrender.com/pizza-store/users/" +
         localStorage.getItem("userId"),
       {
         headers: {

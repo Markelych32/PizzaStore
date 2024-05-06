@@ -4,6 +4,6 @@ module.exports = defineConfig({
   outputDir: "dist",
   assetsDir: "static",
   devServer: {
-    port: 8081, // your desired port number
+    port: 8081,
   },
 });
