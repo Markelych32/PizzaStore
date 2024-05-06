@@ -34,7 +34,7 @@ public class UserServiceTest {
     @Test
     @SneakyThrows
     void addExistingUserShouldThrowException() {
-        when(userRepository.existsById(anyLong())).thenReturn(true);
+        when(userRepository.existsByEmail(anyString())).thenReturn(true);
         final User user = TestData.getUser1();
         assertThrows(UserIsAlreadyExistException.class, () -> underTest.addUser(user));
     }
@@ -43,7 +43,6 @@ public class UserServiceTest {
     @SneakyThrows
     void addNewUserShouldReturnUser() {
         final User user = TestData.getUser1();
-        when(userRepository.existsById(anyLong())).thenReturn(false);
         when(userRepository.save(any(User.class))).thenReturn(user);
 
         final User actualUser = underTest.addUser(user);

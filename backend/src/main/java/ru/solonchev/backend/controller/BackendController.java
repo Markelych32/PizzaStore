@@ -2,6 +2,7 @@ package ru.solonchev.backend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 import ru.solonchev.backend.domain.Pizza;
 import ru.solonchev.backend.domain.User;
