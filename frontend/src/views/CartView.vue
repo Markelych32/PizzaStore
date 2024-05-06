@@ -83,9 +83,6 @@ export default {
       );
     },
     makeOrder() {
-      alert(
-        "Заказ оформлен! На вашу почту отправлено письмо с подробной информацией."
-      );
       AXIOS.post(
         "http://localhost:9090/pizza-store/user/" + this.userId + "/email",
         {},
@@ -97,6 +94,9 @@ export default {
         }
       ).then(() => {
         this.clearCart();
+        alert(
+          "Заказ оформлен! На вашу почту отправлено письмо с подробной информацией."
+        );
         location.reload();
       });
     },

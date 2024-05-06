@@ -34,7 +34,7 @@
             class="password"
             placeholder="Пароль"
             required
-            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$"
           />
           <i
             @click="changePasswordVisibility(0)"
@@ -49,7 +49,7 @@
             class="repeat-password password"
             placeholder="Повторите пароль"
             required
-            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,30}$"
           />
           <i
             @click="changePasswordVisibility(1)"

@@ -141,6 +141,7 @@ export default {
     top: 50%;
     color: #bbbbbb;
     cursor: pointer;
+    opacity: 0.3;
   }
 }
 </style>

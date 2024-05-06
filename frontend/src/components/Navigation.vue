@@ -80,15 +80,6 @@ nav {
     padding: 10px 15px;
     background-color: #f7d22d;
     border-radius: 8px;
-    .pizza-inside {
-      position: absolute;
-      right: -3px;
-      top: -3px;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: #f02e14;
-    }
   }
   .login {
     color: #696f7a;

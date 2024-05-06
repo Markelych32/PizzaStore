@@ -31,9 +31,16 @@ export default {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       }
-    ).then((response) => {
-      this.response = response.data;
-    });
+    )
+      .then((response) => {
+        this.response = response.data;
+      })
+      .catch((e) => {
+        if (localStorage.getItem("token")) {
+          alert("Время вашей сессии истекло!");
+          localStorage.removeItem("token");
+        }
+      });
   },
 };
 </script>
