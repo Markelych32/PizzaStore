@@ -4,8 +4,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: solonchev32@gmail.com
-    password: "aawa hwwa ucry aqxr"
+    username: {MAIL_USERNAME}
+    password: {MAIL_PASSWORD}
     test-connection: true
     properties:
       mail:
@@ -18,9 +18,9 @@ spring:
       text: no-reply
   datasource:
     driver-class-name: org.postgresql.Driver
-    password: dPtzXG8SV5swRzQ7iPDPD66SBldeFrcU
-    username: mark
-    url: jdbc:postgresql://dpg-cosc8ga1hbls73fi2vr0-a.frankfurt-postgres.render.com:5432/pizza_store
+    password: {DB_PASSWORD}
+    username: {DB_USERNAME}
+    url: {DB_URL}
   jpa:
     properties:
       hibernate:
